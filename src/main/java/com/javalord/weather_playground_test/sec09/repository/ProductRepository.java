@@ -1,0 +1,14 @@
+package com.javalord.weather_playground_test.sec09.repository;
+
+import com.javalord.weather_playground_test.sec09.entity.Product;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import reactor.core.publisher.Flux;
+
+public interface ProductRepository extends ReactiveCrudRepository<Product, Integer> {
+
+    Flux<Product> findByPriceBetween(int from, int to);
+
+    Flux<Product> findBy(Pageable pageable);
+
+}
